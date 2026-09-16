@@ -10,7 +10,20 @@
   <header>
     <h1>Учебный интернет-магазин</h1>
   </header>
+  <header>
+  <div class="site-header">
+    <a class="site-logo" href="index.html">ShopProject</a>
 
+    <nav class="site-nav" aria-label="Основная навигация">
+      <ul class="site-nav__list">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="#popular">Популярные товары</a></li>
+        <li><a href="#advantages">Преимущества</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
   <main>
     <section>
       <h2>Главная страница проекта</h2>
@@ -27,9 +40,61 @@
         интернет-магазина или каталога услуг. Проект будет постепенно
         расширяться на следующих практических занятиях.
     </p>
+        </section>
+        <section class="hero">
+    <h1>Учебный интернет-магазин</h1>
+    <p>
+        Это стартовая страница учебного frontend-проекта.
+        В дальнейшем на её основе будет разработан многостраничный сайт
+        интернет-магазина или каталога услуг.
+    </p>
+    <a class="button" href="#popular">Перейти к товарам</a>
     </section>
-  </main>
+    <section class="section" id="advantages">
+    <h2>Преимущества проекта</h2>
 
+    <ul class="advantages-list">
+        <li>понятная HTML-структура;</li>
+        <li>семантические блоки страницы;</li>
+        <li>подключение внешнего CSS-файла;</li>
+        <li>подготовка к разработке многостраничного сайта.</li>
+    </ul>
+    </section>
+    <section class="section" id="popular">
+  <h2>Популярные товары</h2>
+
+  <article class="product-card">
+    <h3>Товар 1</h3>
+    <p>Краткое описание учебного товара.</p>
+    <p>Цена: 1000 руб.</p>
+  </article>
+
+  <article class="product-card">
+    <h3>Товар 2</h3>
+    <p>Краткое описание учебного товара.</p>
+    <p>Цена: 1500 руб.</p>
+  </article>
+
+  <article class="product-card">
+    <h3>Товар 3</h3>
+    <p>Краткое описание учебного товара.</p>
+    <p>Цена: 2000 руб.</p>
+  </article>
+</section>
+    <aside class="aside-info">
+  <h2>Информация для студентов</h2>
+  <p>
+    На следующих практических занятиях этот проект будет расширяться:
+    появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
+    БЭМ-структура и адаптивная версия сайта.
+  </p>
+</aside>
+
+  </main>
+  <footer id="contacts">
+  <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+  <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+</footer>
   <footer>
     <p>&copy; 2026 Учебный проект</p>
   </footer>
