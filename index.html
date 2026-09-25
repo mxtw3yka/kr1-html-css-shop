@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог товаров</title>
+  <meta name="description" content="Главная страница учебного интернет-магазина.">
+  <title>Главная — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Учебный интернет-магазин">
+  <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
+  <meta property="og:image" content="https://mxtw3yka.github.io/kr1-html-css-shop/images/preview.jpg">
 </head>
 <body>
-  <header>
-    <h1>Учебный интернет-магазин</h1>
-  </header>
   <header>
   <div class="site-header">
     <a class="site-logo" href="index.html">ShopProject</a>
 
-    <nav class="site-nav" aria-label="Основная навигация">
-      <ul class="site-nav__list">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="#popular">Популярные товары</a></li>
-        <li><a href="#advantages">Преимущества</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
-    </nav>
+  <nav class="site-nav" aria-label="Основная навигация">
+    <ul class="site-nav__list">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="catalog.html">Каталог</a></li>
+      <li><a href="contacts.html">Контакты</a></li>
+      <li><a href="index.html#advantages">Преимущества</a></li>
+      <li><a href="index.html#popular">Популярные товары</a></li>
+      <li><a href="index.html#contacts">Обратная связь</a></li>
+    </ul>
+  </nav>
   </div>
 </header>
   <main>
@@ -99,9 +103,6 @@
   <p>&copy; 2026 Учебный проект. Все права защищены.</p>
   <p>Дисциплина: Фронтенд и бэкенд разработка</p>
 </footer>
-  <footer>
-    <p>&copy; 2026 Учебный проект</p>
-  </footer>
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
   <h2 id="order-dialog-title">Оформление заявки</h2>
 
