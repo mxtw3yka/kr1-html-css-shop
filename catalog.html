@@ -34,7 +34,6 @@
       <a href="index.html">Главная</a>
       <span>Каталог</span>
     </nav>
-
     <section class="section">
       <h1>Каталог товаров</h1>
       <p>
@@ -44,29 +43,70 @@
       </p>
     </section>
 
-    <section class="section">
-      <h2>Список товаров</h2>
+    <section class="catalog-layout">
+      <aside class="catalog-filters">
+        <h2>Фильтры</h2>
 
-      <article class="product-card">
-        <h3>Товар 1</h3>
-        <p>Краткое описание учебного товара.</p>
-        <p>Цена: 1000 руб.</p>
-        <a class="button" href="index.html#popular">Подробнее</a>
-      </article>
+        <form class="filters-form" action="#" method="get">
+          <fieldset>
+            <legend>Категория</legend>
 
-      <article class="product-card">
-        <h3>Товар 2</h3>
-        <p>Краткое описание учебного товара.</p>
-        <p>Цена: 1500 руб.</p>
-        <a class="button" href="index.html#popular">Подробнее</a>
-      </article>
+            <label>
+              <input type="checkbox" name="category" value="all">
+              Все товары
+            </label>
 
-      <article class="product-card">
-        <h3>Товар 3</h3>
-        <p>Краткое описание учебного товара.</p>
-        <p>Цена: 2000 руб.</p>
-        <a class="button" href="index.html#popular">Подробнее</a>
-      </article>
+            <label>
+              <input type="checkbox" name="category" value="popular">
+              Популярные
+            </label>
+
+            <label>
+              <input type="checkbox" name="category" value="new">
+              Новинки
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Цена</legend>
+
+            <label for="price-from">От</label>
+            <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
+
+            <label for="price-to">До</label>
+            <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+          </fieldset>
+
+          <button class="button" type="submit">Применить</button>
+        </form>
+      </aside>
+
+      <section class="catalog-products">
+        <h2>Список товаров</h2>
+
+        <div class="products-grid">
+          <article class="product-card">
+            <h3>Товар 1</h3>
+            <p>Краткое описание учебного товара.</p>
+            <p>Цена: 1000 руб.</p>
+            <a class="button" href="index.html#popular">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <h3>Товар 2</h3>
+            <p>Краткое описание учебного товара.</p>
+            <p>Цена: 1500 руб.</p>
+            <a class="button" href="index.html#popular">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <h3>Товар 3</h3>
+            <p>Краткое описание учебного товара.</p>
+            <p>Цена: 2000 руб.</p>
+            <a class="button" href="index.html#popular">Подробнее</a>
+          </article>
+        </div>
+      </section>
     </section>
   </main>
 
