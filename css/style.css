@@ -73,6 +73,9 @@ footer {
   Пока используется простой светло-серый фон.
 */
 header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background-color: var(--color-surface);
 }
 
@@ -92,12 +95,17 @@ footer {
 .site-header {
   max-width: var(--container-width);
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
 }
 
 /*
   Оформляем текстовый логотип.
 */
-.site-logo {
+.site-header__logo {
   font-weight: bold;
   text-decoration: none;
   color: var(--color-text);
@@ -106,6 +114,10 @@ footer {
 /*
   Убираем стандартные отступы и маркеры списка навигации.
 */
+.site-nav {
+  margin-left: auto;
+}
+
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
@@ -120,7 +132,11 @@ footer {
 /*
   Оформляем ссылки меню.
 */
-.site-nav__list a {
+.site-nav__item {
+  display: flex;
+}
+
+.site-nav__link {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
   color: var(--color-primary);
@@ -133,7 +149,7 @@ footer {
   При наведении мыши подчёркиваем ссылку.
   Подробно состояния интерфейса будут рассмотрены в практической работе 1.7.
 */
-.site-nav__list a:hover {
+.site-nav__link:hover {
   color: var(--color-white);
   background-color: var(--color-primary);
 }
@@ -158,12 +174,24 @@ a:focus-visible {
   Hero-блок — первый крупный блок страницы.
   Он визуально отделяется от остальных разделов фоном и отступами.
 */
+.hero__button {
+  margin-top: var(--space-md);
+}
+
 .hero {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
   padding: var(--space-xl) var(--space-lg);
   background-color: var(--color-surface-accent);
   border-radius: var(--radius-lg);
+}
+
+.section__title {
+  margin-top: 0;
+}
+
+.products__title {
+  margin-bottom: var(--space-md);
 }
 
 .section {
@@ -190,13 +218,22 @@ a:focus-visible {
   border-color: var(--color-primary);
 }
 
-.product-card .button {
+.product-card__action {
   margin-top: auto;
   align-self: flex-start;
 }
 
-.product-card h3 {
+.product-card__title {
   margin-top: 0;
+}
+
+.product-card__description {
+  margin: 0;
+}
+
+.product-card__price {
+  margin: 0;
+  font-weight: 700;
 }
 
 
@@ -230,6 +267,14 @@ a:focus-visible {
 /*
   Дополнительный информационный блок.
 */
+.aside-info__title {
+  margin-top: 0;
+}
+
+.aside-info__text {
+  margin-bottom: 0;
+}
+
 .aside-info {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
@@ -258,18 +303,27 @@ a:focus-visible {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.form-field {
-  margin-bottom: var(--space-md);
+.order-form {
+  display: grid;
+  gap: var(--space-md);
 }
 
-.form-field label {
+.order-form__field {
+  margin-bottom: 0;
+}
+
+.order-form__label {
   display: block;
   margin-bottom: var(--space-xs);
 }
 
-.form-field input,
-.form-field select,
-.form-field textarea {
+.order-form__hint {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+}
+
+.order-form__control {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--color-border);
@@ -277,32 +331,49 @@ a:focus-visible {
   font: inherit;
 }
 
-.form-field input[type="checkbox"] {
+/*
+  Чекбокс идёт одной строкой с подписью.
+  align-items: center центрирует квадрат по строке текста,
+  иначе он уезжает выше своей подписи.
+*/
+.order-form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 0;
+}
+
+/*
+  Чекбокс не растягивается на всю ширину поля,
+  а стоит в первой колонке рядом с подписью.
+*/
+.order-form__checkbox-control {
+  flex: 0 0 auto;
   width: auto;
+  margin: 0;
+  padding: 0;
 }
 
-.form-field small {
-  display: block;
-  margin-top: var(--space-xs);
-  color: var(--color-muted);
+.order-form__hidden {
+  display: none;
 }
-
 
 /*
   Видимый фокус для клавиатурной навигации.
 */
-.form-field input:hover,
-.form-field select:hover,
-.form-field textarea:hover {
+.order-form__control:hover {
   border-color: var(--color-primary);
 }
 
-.form-field input:focus-visible,
-.form-field select:focus-visible,
-.form-field textarea:focus-visible,
-.form-actions button:focus-visible {
+.order-form__control:focus-visible,
+.order-form__actions button:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
+}
+
+.order-form__checkbox-control:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 [aria-invalid="true"] {
@@ -313,18 +384,31 @@ a:focus-visible {
 /*
   Кнопки формы.
 */
-.form-actions {
+.order-form__actions {
   display: flex;
-  gap: 12px;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.order-form__hidden {
+  display: none;
+}
+
+.order-dialog__title {
+  margin-top: 0;
 }
 
 /*
   Сообщение об успешной отправке.
 */
+.success-message[hidden] {
+  display: none;
+}
+
 .success-message {
-  max-width: var(--container-width);
-  margin: var(--space-lg) auto;
+  max-width: 340px;
+  margin: 0;
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
@@ -337,11 +421,11 @@ a:focus-visible {
   color: var(--color-muted);
 }
 
-.breadcrumbs a {
+.breadcrumbs__link {
   color: var(--color-primary);
 }
 
-.breadcrumbs span::before {
+.breadcrumbs__item::before {
   content: " / ";
   color: var(--color-muted);
 }
@@ -355,13 +439,13 @@ html {
   outline-offset: 4px;
 }
 
-.products-grid {
+.products__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
 }
 
-.catalog-layout {
+.catalog {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
   display: grid;
@@ -370,7 +454,7 @@ html {
   gap: var(--space-lg);
 }
 
-.catalog-filters {
+.catalog__filters {
   grid-area: filters;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
@@ -378,35 +462,133 @@ html {
   background-color: var(--color-surface);
 }
 
-.catalog-products {
+.catalog__products {
   grid-area: products;
 }
 
-.filters-form {
+.catalog__filters-form {
   display: grid;
   gap: var(--space-md);
 }
 
-.filters-form fieldset {
+.catalog__filters-title {
+  margin-top: 0;
+}
+
+.catalog__products-title {
+  margin-top: 0;
+}
+
+.catalog__filters-group {
   margin: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
 
-.filters-form legend {
+.catalog__filters-legend {
   font-weight: 700;
 }
 
-.filters-form label {
+.catalog__filters-label {
   display: block;
   margin-bottom: var(--space-sm);
 }
 
-.filters-form input[type="number"] {
+.catalog__filters-checkbox {
+  margin-right: var(--space-xs);
+  vertical-align: middle;
+}
+
+.catalog__filters-price {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   font: inherit;
+}
+
+/* ===============================
+   6. Позиционирование элементов
+   =============================== */
+
+/*
+  Шапка объявлена position: sticky и остаётся у верхней границы окна.
+  Внутри неё .site-header — flex-контейнер: логотип и меню стоят в ряд.
+
+  Блок фильтров в каталоге тоже sticky, но прижат к низу шапки,
+  поэтому смещение равно высоте шапки.
+  align-self: start обязателен — иначе grid растянет элемент по высоте
+  строки и прилипание перестанет работать.
+*/
+.catalog__filters {
+  position: sticky;
+  top: 116px;
+  align-self: start;
+}
+
+/*
+  Карточка товара — relative.
+  Это базовая точка отсчёта: любая метка внутри неё
+  позиционируется относительно границ карточки, а не окна.
+*/
+.product-card {
+  position: relative;
+}
+
+/*
+  Уведомление об успешной отправке — fixed.
+  Оно остаётся в углу при прокрутке, а z-index: 20 держит его
+  поверх шапки (z-index: 10).
+*/
+.success-message {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 20;
+}
+
+/*
+  Кнопка «Наверх» — fixed в правом нижнем углу.
+  Базовое состояние скрыто через display: none,
+  а модификатор --visible показывает её после прокрутки.
+*/
+.to-top {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 15;
+  display: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.to-top--visible {
+  display: flex;
+}
+
+.to-top:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .catalog__filters {
+    position: static;
+    top: auto;
+  }
 }

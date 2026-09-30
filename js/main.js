@@ -2,7 +2,7 @@
 const orderDialog = document.getElementById('order-dialog');
 
 // Получаем все кнопки заказа в карточках товаров.
-const orderButtons = document.querySelectorAll('.product-card__button');
+const orderButtons = document.querySelectorAll('.product-card__action');
 
 // Получаем кнопку закрытия модального окна.
 const closeDialogButton = document.getElementById('close-order-dialog');
@@ -71,4 +71,20 @@ orderForm.addEventListener('submit', (event) => {
 
   // Закрываем модальное окно.
   orderDialog.close();
+});
+
+// Получаем кнопку «Наверх».
+const toTopButton = document.getElementById('to-top');
+
+// Порог прокрутки, после которого кнопка появляется.
+const TO_TOP_THRESHOLD = 300;
+
+// Показываем или скрываем кнопку в зависимости от положения страницы.
+window.addEventListener('scroll', () => {
+  toTopButton.classList.toggle('to-top--visible', window.scrollY > TO_TOP_THRESHOLD);
+});
+
+// Прокручиваем страницу к началу.
+toTopButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
