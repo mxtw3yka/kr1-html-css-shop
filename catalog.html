@@ -12,18 +12,30 @@
   <meta property="og:image" content="https://mxtw3yka.github.io/kr1-html-css-shop/images/preview.jpg">
 </head>
 <body>
-  <header>
-    <div class="site-header">
+  <header class="site-header">
+    <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -32,8 +44,9 @@
   <main>
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__item">Каталог</span>
+      <span class="breadcrumbs__current">Каталог</span>
     </nav>
+
     <section class="section">
       <h1 class="section__title">Каталог товаров</h1>
       <p>
@@ -43,76 +56,76 @@
       </p>
     </section>
 
-    <section class="catalog">
-      <aside class="catalog__filters">
-        <h2 class="catalog__filters-title">Фильтры</h2>
+    <section class="catalog-layout">
+      <aside class="catalog-filters">
+        <h2 class="catalog-filters__title">Фильтры</h2>
 
-        <form class="catalog__filters-form" action="#" method="get">
-          <fieldset class="catalog__filters-group">
-            <legend class="catalog__filters-legend">Категория</legend>
+        <form class="catalog-filters__form" action="#" method="get">
+          <fieldset class="catalog-filters__group">
+            <legend class="catalog-filters__legend">Категория</legend>
 
-            <label class="catalog__filters-label">
-              <input class="catalog__filters-checkbox" type="checkbox" name="category" value="all">
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="all">
               Все товары
             </label>
 
-            <label class="catalog__filters-label">
-              <input class="catalog__filters-checkbox" type="checkbox" name="category" value="popular">
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="popular">
               Популярные
             </label>
 
-            <label class="catalog__filters-label">
-              <input class="catalog__filters-checkbox" type="checkbox" name="category" value="new">
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="new">
               Новинки
             </label>
           </fieldset>
 
-          <fieldset class="catalog__filters-group">
-            <legend class="catalog__filters-legend">Цена</legend>
+          <fieldset class="catalog-filters__group">
+            <legend class="catalog-filters__legend">Цена</legend>
 
-            <label class="catalog__filters-label" for="price-from">От</label>
-            <input class="catalog__filters-price" id="price-from" name="price-from" type="number" min="0" placeholder="0">
+            <label class="catalog-filters__label" for="price-from">От</label>
+            <input class="catalog-filters__price" id="price-from" name="price-from" type="number" min="0" placeholder="0">
 
-            <label class="catalog__filters-label" for="price-to">До</label>
-            <input class="catalog__filters-price" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+            <label class="catalog-filters__label" for="price-to">До</label>
+            <input class="catalog-filters__price" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
           </fieldset>
 
-          <button class="button" type="submit">Применить</button>
+          <button class="button button--primary" type="submit">Применить</button>
         </form>
       </aside>
 
-      <section class="catalog__products">
-        <h2 class="catalog__products-title">Список товаров</h2>
+      <section class="catalog-layout__products">
+        <h2 class="catalog-layout__products-title">Список товаров</h2>
 
-        <div class="products__grid">
+        <div class="products-grid">
           <article class="product-card">
             <h3 class="product-card__title">Товар 1</h3>
             <p class="product-card__description">Краткое описание учебного товара.</p>
             <p class="product-card__price">Цена: 1000 руб.</p>
-            <a class="button product-card__action" href="index.html#popular">Подробнее</a>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
             <h3 class="product-card__title">Товар 2</h3>
             <p class="product-card__description">Краткое описание учебного товара.</p>
             <p class="product-card__price">Цена: 1500 руб.</p>
-            <a class="button product-card__action" href="index.html#popular">Подробнее</a>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
             <h3 class="product-card__title">Товар 3</h3>
             <p class="product-card__description">Краткое описание учебного товара.</p>
             <p class="product-card__price">Цена: 2000 руб.</p>
-            <a class="button product-card__action" href="index.html#popular">Подробнее</a>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
         </div>
       </section>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="site-footer">
+    <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
 </body>
 </html>
