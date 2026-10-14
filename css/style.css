@@ -264,6 +264,33 @@ html {
   align-self: flex-start;
 }
 
+/*
+  Бейдж карточки («Новинка», «Скидка», «Хит»).
+  Позиционируется абсолютно относительно карточки,
+  у которой задано position: relative.
+*/
+.product-card__badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 1;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background-color: var(--color-danger);
+  border-radius: var(--radius-sm);
+}
+
+.product-card__badge--new {
+  background-color: var(--color-success);
+}
+
+.product-card__badge--hit {
+  background-color: var(--color-primary);
+}
+
 /* ===============================
    9. Информационный блок (aside-info)
    =============================== */
@@ -281,6 +308,106 @@ html {
 
 .aside-info__text {
   margin-bottom: 0;
+}
+
+/* ===============================
+   9.1 Страница товара (product-detail)
+   =============================== */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.product-detail__media {
+  position: relative;
+}
+
+.product-detail__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.product-detail__title {
+  margin-top: 0;
+}
+
+.product-detail__price {
+  margin: var(--space-sm) 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.product-detail__description {
+  color: var(--color-muted);
+}
+
+.product-detail__features {
+  margin: 0 0 var(--space-md);
+  padding-left: var(--space-lg);
+}
+
+.product-detail__feature {
+  margin-bottom: var(--space-xs);
+}
+
+.product-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.product-detail__aside-button {
+  margin-top: var(--space-md);
+}
+
+/* ===============================
+   9.2 Таблица характеристик (product-table)
+   =============================== */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-bg);
+}
+
+.product-table caption {
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
+  text-align: left;
+}
+
+.product-table th,
+.product-table td {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.product-table thead th {
+  background-color: var(--color-surface);
+}
+
+.product-table tbody tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+/* ===============================
+   9.3 Список контактов (contacts)
+   =============================== */
+.contacts {
+  margin: 0;
+  padding-left: var(--space-lg);
+}
+
+.contacts__item {
+  margin-bottom: var(--space-xs);
 }
 
 /* ===============================
@@ -398,6 +525,18 @@ html {
 .order-form {
   display: grid;
   gap: var(--space-md);
+}
+
+/*
+  Вариант формы на отдельной странице: ограниченная ширина,
+  рамка и внутренние отступы вместо модального окна.
+*/
+.order-form--page {
+  max-width: 640px;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
 }
 
 .order-form__field {
@@ -546,5 +685,26 @@ html {
   .catalog-filters {
     position: static;
     top: auto;
+  }
+
+  .catalog-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "filters"
+      "products";
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: 1fr;
   }
 }
