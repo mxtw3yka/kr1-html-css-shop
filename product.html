@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Карточка товара учебного интернет-магазина: изображение, описание, характеристики и цена.">
+  <meta name="description" content="Карточка товара учебного интернет-магазина: изображения, описание, характеристики, тарифы и цена.">
   <title>Товар 1 — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
   <meta property="og:type" content="product">
   <meta property="og:title" content="Товар 1 — Учебный интернет-магазин">
   <meta property="og:description" content="Подробная карточка учебного товара с характеристиками и ценой.">
@@ -53,26 +54,176 @@
 
     <section class="section">
       <article class="product-detail">
+        <div class="product-detail__media">
+          <img class="product-detail__image" src="images/preview.jpg" alt="Товар 1, общий вид" width="320" height="240">
+
+          <ul class="product-detail__thumbs">
+            <li class="product-detail__thumb">
+              <img src="images/preview.jpg" alt="Товар 1, вид спереди" width="64" height="48">
+            </li>
+            <li class="product-detail__thumb">
+              <img src="images/preview.jpg" alt="Товар 1, вид сбоку" width="64" height="48">
+            </li>
+            <li class="product-detail__thumb">
+              <img src="images/preview.jpg" alt="Товар 1, упаковка" width="64" height="48">
+            </li>
+          </ul>
+        </div>
+
         <div class="product-detail__info">
           <h1 class="product-detail__title">Товар 1</h1>
+          <p class="product-detail__price-old">1500 руб.</p>
           <p class="product-detail__price">1000 руб.</p>
+          <p class="product-detail__availability product-detail__availability--low">Осталось 3 шт.</p>
+
           <p class="product-detail__description">
             Это подробное описание учебного товара. Карточка демонстрирует
-            цену, краткий список характеристик и кнопку оформления заявки.
+            галерею, цену, наличие на складе, таблицу характеристик,
+            условия доставки и кнопку оформления заявки.
           </p>
 
           <ul class="product-detail__features">
             <li class="product-detail__feature">Материал: учебный состав;</li>
             <li class="product-detail__feature">Гарантия: 12 месяцев;</li>
-            <li class="product-detail__feature">Доставка по всей стране.</li>
+            <li class="product-detail__feature">Доставка по всей стране;</li>
+            <li class="product-detail__feature">Возврат в течение 14 дней.</li>
           </ul>
 
           <div class="product-detail__actions">
             <a class="button button--primary" href="order.html">Оформить заявку</a>
             <a class="button button--secondary" href="catalog.html">Вернуться в каталог</a>
+            <button class="button button--secondary" type="button" data-favorite>
+              Добавить в избранное
+            </button>
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Характеристики</h2>
+
+      <table class="product-table">
+        <caption class="product-table__caption">Параметры товара</caption>
+        <thead>
+          <tr>
+            <th scope="col">Параметр</th>
+            <th scope="col">Значение</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Производитель</th>
+            <td>Учебный завод</td>
+          </tr>
+          <tr>
+            <th scope="row">Артикул</th>
+            <td>TS-100-01</td>
+          </tr>
+          <tr>
+            <th scope="row">Материал</th>
+            <td>Учебный состав</td>
+          </tr>
+          <tr>
+            <th scope="row">Цвет</th>
+            <td>Серый</td>
+          </tr>
+          <tr>
+            <th scope="row">Размеры</th>
+            <td>200 × 150 × 50 мм</td>
+          </tr>
+          <tr>
+            <th scope="row">Вес</th>
+            <td>1,2 кг</td>
+          </tr>
+          <tr>
+            <th scope="row">Гарантия</th>
+            <td>12 месяцев</td>
+          </tr>
+          <tr>
+            <th scope="row">Комплектация</th>
+            <td>Товар, паспорт изделия, гарантийный талон</td>
+          </tr>
+          <tr>
+            <th scope="row">Страна-производитель</th>
+            <td>Россия</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Доставка и оплата</h2>
+
+      <ul class="product-detail__delivery">
+        <li class="product-detail__delivery-item">Самовывоз из пункта выдачи — бесплатно, сегодня до 19:00;</li>
+        <li class="product-detail__delivery-item">Курьером по городу — 300 руб., 1-2 дня;</li>
+        <li class="product-detail__delivery-item">Доставка в другие регионы — 500 руб., 3-5 дней;</li>
+        <li class="product-detail__delivery-item">Оплата картой, по счёту или при получении.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Сравнение тарифов</h2>
+      <p>
+        Для товаров из каталога доступны три тарифа обслуживания.
+        Сравнение по основным параметрам приведено в таблице.
+      </p>
+
+      <table class="tariffs-table">
+        <caption class="tariffs-table__caption">Тарифы обслуживания</caption>
+        <thead>
+          <tr>
+            <th scope="col">Возможности</th>
+            <th scope="col">Старт</th>
+            <th scope="col">Бизнес</th>
+            <th scope="col">Премиум</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Цена в месяц</th>
+            <td>1000 руб.</td>
+            <td>1800 руб.</td>
+            <td>3000 руб.</td>
+          </tr>
+          <tr>
+            <th scope="row">Каналы поддержки</th>
+            <td>Email</td>
+            <td>Email и телефон</td>
+            <td>Менеджер 24/7</td>
+          </tr>
+          <tr>
+            <th scope="row">Время ответа</th>
+            <td>24 часа</td>
+            <td>4 часа</td>
+            <td>1 час</td>
+          </tr>
+          <tr>
+            <th scope="row">Скидка на следующий заказ</th>
+            <td>Нет</td>
+            <td>5%</td>
+            <td>10%</td>
+          </tr>
+          <tr>
+            <th scope="row">Отчётность</th>
+            <td>Нет</td>
+            <td>Ежемесячно</td>
+            <td>Ежемесячно и квартальная</td>
+          </tr>
+          <tr>
+            <th scope="row">Способы оплаты</th>
+            <td>Карта</td>
+            <td>Карта, счёт</td>
+            <td>Карта, счёт, по договору</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="product-detail__actions">
+        <a class="button button--primary" href="order.html">Выбрать тариф</a>
+        <a class="button button--secondary" href="catalog.html">К товарам</a>
+      </div>
     </section>
 
     <section class="faq">
@@ -83,6 +234,9 @@
 
       <p class="faq__question">Сколько идёт доставка?</p>
       <p class="faq__answer">1-4 дня.</p>
+
+      <p class="faq__question">Можно ли вернуть товар?</p>
+      <p class="faq__answer">Да, в течение 14 дней с момента получения.</p>
     </section>
 
     <section class="reviews">

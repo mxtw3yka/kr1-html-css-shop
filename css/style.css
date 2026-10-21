@@ -13,6 +13,7 @@
   --color-surface-accent: #eef5ff;
   --color-danger: #b00020;
   --color-success: #168a2f;
+  --color-success-dark: #0f6f24;
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
 
@@ -169,6 +170,16 @@ html {
   background-color: var(--color-primary);
 }
 
+/* Состояние «готово»: например, заявка уже отправлена. */
+.button--success {
+  color: var(--color-white);
+  background-color: var(--color-success);
+}
+
+.button--success:hover {
+  background-color: var(--color-success-dark);
+}
+
 .button:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
@@ -240,6 +251,17 @@ html {
   border-color: var(--color-danger);
 }
 
+/* Карточка товара, которого сейчас нет в наличии. */
+.product-card--sold-out {
+  border-color: var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.product-card--sold-out .product-card__title,
+.product-card--sold-out .product-card__price {
+  color: var(--color-muted);
+}
+
 .product-card__title {
   margin-top: 0;
   color: var(--color-text);
@@ -248,6 +270,25 @@ html {
 .product-card__description {
   margin: 0;
   color: var(--color-muted);
+}
+
+/* Старая цена — перечёркнута. */
+.product-card__price-old {
+  margin: 0;
+  font-weight: 400;
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
+/* Подпись под описанием: наличие, тип товара и т.п. */
+.product-card__meta {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.product-card__meta--out {
+  color: var(--color-danger);
 }
 
 .product-card__price {
@@ -291,6 +332,11 @@ html {
   background-color: var(--color-primary);
 }
 
+/* Бейдж товара, который закончился. */
+.product-card__badge--out {
+  background-color: var(--color-muted);
+}
+
 /* ===============================
    9. Информационный блок (aside-info)
    =============================== */
@@ -315,18 +361,71 @@ html {
    =============================== */
 .product-detail {
   display: grid;
+  grid-template-columns: 320px 1fr;
   gap: var(--space-xl);
   align-items: start;
+}
+
+.product-detail__media {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.product-detail__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.product-detail__thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.product-detail__thumb {
+  width: 64px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.product-detail__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .product-detail__title {
   margin-top: 0;
 }
 
+.product-detail__price-old {
+  margin: 0;
+  color: var(--color-muted);
+  text-decoration: line-through;
+}
+
 .product-detail__price {
   margin: var(--space-sm) 0;
   font-size: 24px;
   font-weight: 700;
+  color: var(--color-primary);
+}
+
+.product-detail__availability {
+  margin: 0 0 var(--space-md);
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.product-detail__availability--low {
   color: var(--color-primary);
 }
 
@@ -343,11 +442,61 @@ html {
   margin-bottom: var(--space-xs);
 }
 
+.product-detail__delivery {
+  margin: 0;
+  padding-left: var(--space-lg);
+  color: var(--color-muted);
+}
+
+.product-detail__delivery-item {
+  margin-bottom: var(--space-xs);
+}
+
 .product-detail__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
   margin-top: var(--space-md);
+}
+
+/* ===============================
+   9.2 Таблицы характеристик и тарифов
+   =============================== */
+.product-table,
+.tariffs-table {
+  width: 100%;
+  margin-bottom: var(--space-lg);
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.product-table__caption,
+.tariffs-table__caption {
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
+  text-align: left;
+}
+
+.product-table th,
+.product-table td,
+.tariffs-table th,
+.tariffs-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.product-table thead th,
+.tariffs-table thead th {
+  background-color: var(--color-surface);
+}
+
+.product-table tbody th,
+.tariffs-table tbody th {
+  width: 220px;
+  font-weight: 400;
+  color: var(--color-muted);
 }
 
 /* ===============================
@@ -447,6 +596,41 @@ html {
 
 .catalog-filters__price {
   width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+.catalog-filters__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+/* ===============================
+   12.1 Панель каталога (catalog-toolbar)
+   =============================== */
+.catalog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.catalog-toolbar__count {
+  margin: 0 auto 0 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.catalog-toolbar__sort-label {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.catalog-toolbar__sort {
   padding: 8px 10px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
@@ -683,6 +867,10 @@ html {
 
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
   }
 }
 
