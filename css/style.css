@@ -262,6 +262,21 @@ html {
   color: var(--color-muted);
 }
 
+.product-card--sold-out .product-card__image {
+  filter: grayscale(1);
+}
+
+/* Фотография товара в карточке. */
+.product-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+}
+
 .product-card__title {
   margin-top: 0;
   color: var(--color-text);
