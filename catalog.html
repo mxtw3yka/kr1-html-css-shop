@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог товаров учебного интернет-магазина с фильтрами по категории и цене.">
+  <meta name="description" content="Каталог товаров и услуг учебного интернет-магазина с фильтрами по категории и цене, сортировкой и карточками товаров.">
   <title>Каталог товаров — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
   <meta property="og:type" content="website">
@@ -53,9 +53,9 @@
     <section class="section">
       <h1 class="section__title">Каталог товаров</h1>
       <p>
-        На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
+        На этой странице представлен учебный каталог товаров и услуг.
+        Слева находятся фильтры по категории и цене, сверху списка —
+        сортировка. Фильтрация пока статическая, backend пока не подключён.
       </p>
     </section>
 
@@ -81,6 +81,16 @@
               <input class="catalog-filters__checkbox" type="checkbox" name="category" value="new">
               Новинки
             </label>
+
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="discount">
+              Скидки
+            </label>
+
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__checkbox" type="checkbox" name="category" value="service">
+              Услуги
+            </label>
           </fieldset>
 
           <fieldset class="catalog-filters__group">
@@ -93,18 +103,48 @@
             <input class="catalog-filters__price" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
           </fieldset>
 
-          <button class="button button--primary" type="submit">Применить</button>
+          <fieldset class="catalog-filters__group">
+            <legend class="catalog-filters__legend">Наличие</legend>
+
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__checkbox" type="checkbox" name="stock" value="in">
+              В наличии
+            </label>
+
+            <label class="catalog-filters__label">
+              <input class="catalog-filters__checkbox" type="checkbox" name="stock" value="out">
+              Нет в наличии
+            </label>
+          </fieldset>
+
+          <div class="catalog-filters__actions">
+            <button class="button button--primary" type="submit">Применить</button>
+            <button class="button button--secondary" type="reset">Сбросить</button>
+          </div>
         </form>
       </aside>
 
       <section class="catalog-layout__products">
         <h2 class="catalog-layout__products-title">Список товаров</h2>
 
+        <div class="catalog-toolbar">
+          <p class="catalog-toolbar__count">Найдено товаров: 9</p>
+
+          <label class="catalog-toolbar__sort-label" for="catalog-sort">Сортировка:</label>
+          <select class="catalog-toolbar__sort" id="catalog-sort" name="sort">
+            <option value="popular">По популярности</option>
+            <option value="cheap">Сначала дешёвые</option>
+            <option value="expensive">Сначала дорогие</option>
+            <option value="new">По новизне</option>
+          </select>
+        </div>
+
         <div class="products-grid">
           <article class="product-card product-card--featured">
             <span class="product-card__badge product-card__badge--hit">Хит</span>
             <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__description">Базовый учебный товар для практических занятий.</p>
+            <p class="product-card__meta">В наличии</p>
             <p class="product-card__price">Цена: 1000 руб.</p>
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
@@ -112,7 +152,8 @@
           <article class="product-card">
             <span class="product-card__badge product-card__badge--new">Новинка</span>
             <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__description">Учебный товар для лабораторных работ.</p>
+            <p class="product-card__meta">В наличии</p>
             <p class="product-card__price">Цена: 1500 руб.</p>
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
@@ -120,8 +161,64 @@
           <article class="product-card product-card--discount">
             <span class="product-card__badge">Скидка</span>
             <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__description">Учебный товар со скидкой, объём ограничен.</p>
+            <p class="product-card__meta">Осталось 2 шт.</p>
+            <p class="product-card__price-old">2500 руб.</p>
             <p class="product-card__price">Цена: 2000 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Товар 4</h3>
+            <p class="product-card__description">Расходный материал для учебных работ.</p>
+            <p class="product-card__meta">В наличии</p>
+            <p class="product-card__price">Цена: 2400 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
+            <h3 class="product-card__title">Товар 5</h3>
+            <p class="product-card__description">Набор для демонстрации на занятиях.</p>
+            <p class="product-card__meta">В наличии</p>
+            <p class="product-card__price">Цена: 3200 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--discount">
+            <span class="product-card__badge">Скидка</span>
+            <h3 class="product-card__title">Товар 6</h3>
+            <p class="product-card__description">Учебный товар из прошлой партии.</p>
+            <p class="product-card__meta">Осталось 4 шт.</p>
+            <p class="product-card__price-old">2200 руб.</p>
+            <p class="product-card__price">Цена: 1800 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--sold-out">
+            <span class="product-card__badge product-card__badge--out">Закончился</span>
+            <h3 class="product-card__title">Товар 7</h3>
+            <p class="product-card__description">Товар сейчас закончился, ждём новую поставку.</p>
+            <p class="product-card__meta product-card__meta--out">Нет в наличии</p>
+            <p class="product-card__price">Цена: 900 руб.</p>
+            <button class="button button--primary product-card__button" type="button" disabled>
+              Нет в наличии
+            </button>
+          </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Настройка оборудования</h3>
+            <p class="product-card__description">Услуга: запуск и настройка учебного оборудования.</p>
+            <p class="product-card__meta">Услуга</p>
+            <p class="product-card__price">Цена: 2000 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Сопровождение проекта</h3>
+            <p class="product-card__description">Услуга: консультации по ходу учебного проекта.</p>
+            <p class="product-card__meta">Услуга</p>
+            <p class="product-card__price">Цена: 500 руб.</p>
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
         </div>
