@@ -70,7 +70,7 @@ export default function Layout({ page, theme, onThemeToggle, favoritesCount = 0,
         <div className="shell">
           <div className="footer-top">
             <div className="footer-identity"><Brand /><p>Техника для жизни и работы.</p><p className="footer-note">Выбирайте устройство в каталоге.</p></div>
-            <nav className="footer-links" aria-label="Навигация внизу страницы"><h2>Разделы</h2><a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="contacts.html">Контакты</a><a href="search.html">Поиск</a><a href="cabinet.html">Избранное</a></nav>
+            <nav className="footer-links" aria-label="Навигация внизу страницы"><h2>Разделы</h2><a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="contacts.html">Контакты</a><a href="search.html">Поиск</a><a href="cabinet.html">Избранное</a><a href="https://github.com/mxtw3yka/kr1-html-css-shop/blob/main/images/products/CREDITS.md" target="_blank" rel="noopener noreferrer">Источники фото</a></nav>
             <div className="footer-contact">
               <h2>Связаться с нами</h2>
               <p className="footer-contact-line"><Icon name="phone" /><span>Телефон: <a href="tel:+74951202200">+7 (495) 120-22-00</a></span></p>

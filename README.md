@@ -51,6 +51,10 @@ npm run dev
 
 React, Vite, HTML, CSS и JavaScript. `node_modules/` и `dist/` не добавляются в Git.
 
+## Публикация
+
+Изменения в `main` собираются GitHub Actions из исходников React/Vite и публикуются из `dist/` на [GitHub Pages](https://mxtw3yka.github.io/kr1-html-css-shop/). Настройка Pages должна использовать источник GitHub Actions, а не файлы из корня ветки.
+
 ## Автор
 
 Волков Матвей Михайлович.
