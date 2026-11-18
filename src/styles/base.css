@@ -1,0 +1,68 @@
+:root {
+  --brand-night: #1b2022;
+  --brand-night-soft: #2b3235;
+  --brand-paper: #eef1f0;
+  --brand-ink: #232a2d;
+  --brand-steel: #b5c0c3;
+  --brand-silver: #cbd5d7;
+  --ink: var(--brand-ink);
+  --ink-deep: var(--brand-night);
+  --ink-soft: var(--brand-night-soft);
+  --paper: var(--brand-paper);
+  --paper-bright: #fff;
+  --steel: var(--brand-steel);
+  --muted: var(--brand-steel);
+  --line: #536066;
+  --accent: var(--brand-silver);
+  --display: 'Unbounded', 'Manrope', sans-serif;
+  --body: 'Manrope', Arial, sans-serif;
+  --surface: var(--brand-night);
+  --surface-alt: var(--brand-night-soft);
+  --text: #f0f2f1;
+  --text-muted: var(--brand-steel);
+  --border: #536066;
+  font-family: var(--body);
+  color-scheme: dark;
+}
+
+html[data-theme='light'] {
+  --accent: #405258;
+  --muted: #536066;
+  --line: #cbd5d7;
+  --surface: var(--brand-paper);
+  --surface-alt: #fff;
+  --text: var(--brand-ink);
+  --text-muted: #536066;
+  --border: #cbd5d7;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+:target { scroll-margin-top: 130px; }
+body { margin: 0; min-width: 320px; background: var(--surface); color: var(--text); font: 400 15px/1.65 var(--body); }
+button, input, select, textarea { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+img, svg { max-width: 100%; }
+img { display: block; }
+::selection { background: var(--brand-silver); color: var(--brand-night); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.shell { width: min(100% - 64px, 1280px); margin-inline: auto; }
+
+@media (hover: hover) and (pointer: fine) {
+  html, body { cursor: url('../assets/cursor-wrench.svg') 5 6, auto; }
+  a, button, select, summary, [role='button'] { cursor: url('../assets/cursor-wrench.svg') 5 6, pointer; }
+  input, textarea, [contenteditable='true'] { cursor: text; }
+  input[type='range'] { cursor: ew-resize; }
+}
+html.theme-switching body, html.theme-switching .site-header, html.theme-switching .hours-strip,
+html.theme-switching .site-footer, html.theme-switching .footer-visit-card,
+html.theme-switching .header-utility, html.theme-switching .header-order {
+  transition: background-color .42s ease, color .42s ease, border-color .42s ease;
+}
+@media (max-width: 600px) { .shell { width: min(100% - 32px, 1280px); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
