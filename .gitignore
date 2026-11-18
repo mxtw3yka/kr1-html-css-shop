@@ -15,3 +15,7 @@ Thumbs.db
 # Переменные окружения
 .env
 .env.*
+
+# React/Vite
+node_modules/
+dist/
