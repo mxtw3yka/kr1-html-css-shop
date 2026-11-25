@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/build-go-demo.mjs && vite",
+    "build": "node scripts/build-go-demo.mjs && vite build",
+    "build:pages": "node scripts/build-go-demo.mjs && vite build --mode pages",
     "preview": "vite preview"
   },
   "dependencies": {
