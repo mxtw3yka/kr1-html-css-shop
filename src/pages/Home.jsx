@@ -3,11 +3,10 @@ import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
 import { OrderForm } from './Order';
 
-const featured = products.filter((product) => product.featured);
-
 export default function Home({ favorites = [], onToggleFavorite }) {
   const dialogRef = useRef(null);
   const [selected, setSelected] = useState(null);
+  const featured = products.filter((product) => product.featured);
 
   function openPreview(product) {
     setSelected(product);
@@ -17,7 +16,7 @@ export default function Home({ favorites = [], onToggleFavorite }) {
   return (
     <div className="shop-page">
       <section className="shop-home-hero" aria-labelledby="shop-home-title">
-        <div className="shop-home-hero__photo"><img src={products[0].image} alt="Механическая клавиатура K-500" width="1000" height="750" fetchPriority="high" /></div>
+        <div className="shop-home-hero__photo"><img src={products[0].image} srcSet={`${products[0].imageSmall} 480w, ${products[0].image} 1000w`} sizes="(max-width: 760px) calc(100vw - 36px), 44vw" alt="Механическая клавиатура K-500" width="1000" height="750" fetchPriority="high" /></div>
         <div className="shop-home-hero__shade" />
         <div className="shop-container shop-home-hero__inner"><div className="shop-home-hero__copy">
           <p className="shop-kicker">Техника для работы и своих проектов</p>

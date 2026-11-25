@@ -18,7 +18,7 @@ export function OrderForm({ initialProduct = null, onClose }) {
       <div className="shop-form-grid">
         <label htmlFor={`${prefix}-name`}>Имя<input id={`${prefix}-name`} name="name" type="text" minLength="2" autoComplete="given-name" placeholder="Ваше имя" required /></label>
         <label htmlFor={`${prefix}-email`}>E-mail<input id={`${prefix}-email`} name="email" type="email" autoComplete="email" placeholder="example@mail.ru" required /></label>
-        <label htmlFor={`${prefix}-phone`}>Телефон<input id={`${prefix}-phone`} name="phone" type="tel" inputMode="tel" autoComplete="tel" pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="+7 (900) 000-00-00" aria-describedby={`${prefix}-phone-hint`} required /><small id={`${prefix}-phone-hint`}>Формат: +7 (900) 000-00-00</small></label>
+        <div className="shop-form-field"><label htmlFor={`${prefix}-phone`}>Телефон</label><input id={`${prefix}-phone`} name="phone" type="tel" inputMode="tel" autoComplete="tel" pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="+7 (900) 000-00-00" aria-describedby={`${prefix}-phone-hint`} required /><small id={`${prefix}-phone-hint`}>Формат: +7 (900) 000-00-00</small></div>
         <label htmlFor={`${prefix}-date`}>Дата связи<input id={`${prefix}-date`} name="date" type="date" /></label>
         <label htmlFor={`${prefix}-product`}>Товар или услуга<select id={`${prefix}-product`} name="product" defaultValue={initialProduct?.stock ? initialProduct.id : ''}>
           <option value="">Выберите товар</option>

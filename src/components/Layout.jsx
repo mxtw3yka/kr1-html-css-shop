@@ -12,7 +12,7 @@ const navigation = [
 function Brand() {
   const cutoutId = useId();
   return (
-    <a className="brand" href="index.html" aria-label="Gear — на главную">
+    <a className="brand" href="index.html">
       <svg className="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><defs><mask id={cutoutId}><rect width="48" height="48" fill="white"/><path d="M31 17a10 10 0 1 0 2 10v-3h-9" fill="none" stroke="black" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"/></mask></defs><path d="M20 2h8l1 5 4 2 4-3 5 5-3 4 2 4 5 1v8l-5 1-2 4 3 4-5 5-4-3-4 2-1 5h-8l-1-5-4-2-4 3-5-5 3-4-2-4-5-1v-8l5-1 2-4-3-4 5-5 4 3 4-2z" fill="currentColor" mask={`url(#${cutoutId})`}/></svg>
       <span className="brand-type"><strong>GEAR</strong><small>магазин электроники</small></span>
     </a>
@@ -78,8 +78,8 @@ export default function Layout({ page, theme, onThemeToggle, favoritesCount = 0,
               <p className="footer-contact-line"><Icon name="mail" /><span>Почта: <a href="mailto:hello@gear.com">hello@gear.com</a></span></p>
               <p className="footer-social-label">Найти Gear</p>
               <div className="social-links">
-                <a className="social-link" href="https://yandex.ru/search/?text=Gear+ВКонтакте" target="_blank" rel="noopener noreferrer" aria-label="Искать Gear во ВКонтакте через Яндекс (откроется новая вкладка)"><SocialIcon name="vk" />Наша группа во ВКонтакте</a>
-                <a className="social-link" href="https://yandex.ru/search/?text=Gear+Telegram" target="_blank" rel="noopener noreferrer" aria-label="Искать Gear в Telegram через Яндекс (откроется новая вкладка)"><SocialIcon name="telegram" />Наш канал в Telegram</a>
+                <a className="social-link" href="https://yandex.ru/search/?text=Gear+ВКонтакте" target="_blank" rel="noopener noreferrer"><SocialIcon name="vk" />Найти Gear во ВКонтакте</a>
+                <a className="social-link" href="https://yandex.ru/search/?text=Gear+Telegram" target="_blank" rel="noopener noreferrer"><SocialIcon name="telegram" />Найти Gear в Telegram</a>
               </div>
             </div>
             <div className="footer-visit-card"><h2>Gear — онлайн</h2><p className="footer-location-line"><Icon name="location" /><span>Москва, Багратионовский проезд, 7к3</span></p><p>Адрес отмечен на карте ниже.</p><a className="footer-cta" href="catalog.html">Перейти к товарам <span aria-hidden="true">↗</span></a></div>

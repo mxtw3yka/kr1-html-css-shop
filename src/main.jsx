@@ -8,7 +8,8 @@ import Order from './pages/Order.jsx';
 import Contacts from './pages/Contacts.jsx';
 import Search from './pages/Search.jsx';
 import Cabinet from './pages/Cabinet.jsx';
-import { products } from './data/products.js';
+import { loadProducts, products } from './data/products.js';
+import { startGoDemo } from './goDemo.js';
 import './styles/pages.css';
 import './styles/features.css';
 
@@ -76,4 +77,12 @@ function App() {
   );
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+const root = createRoot(document.getElementById('root'));
+root.render(<main className="shop-page"><p role="status" aria-live="polite">Загружаем каталог…</p></main>);
+loadProducts().then(() => {
+  root.render(<App />);
+  startGoDemo(products.find((product) => product.id === 'k-200'));
+}).catch((error) => {
+  console.error('Не удалось загрузить каталог:', error);
+  root.render(<main className="shop-page"><div role="alert"><h1>Каталог не загрузился</h1><p>Проверьте подключение к серверу и попробуйте снова.</p></div><button type="button" onClick={() => window.location.reload()}>Повторить</button></main>);
+});

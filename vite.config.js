@@ -7,6 +7,11 @@ const pages = ['index', 'catalog', 'product', 'order', 'contacts', 'search', 'ca
 export default defineConfig({
   base: './',
   plugins: [react()],
+  server: {
+    proxy: {
+      '/api': process.env.GEAR_API_TARGET || 'http://127.0.0.1:8080',
+    },
+  },
   build: {
     rollupOptions: {
       input: Object.fromEntries(pages.map((page) => [page, resolve(import.meta.dirname, `${page}.html`)])),

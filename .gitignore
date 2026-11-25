@@ -19,3 +19,4 @@ Thumbs.db
 # React/Vite
 node_modules/
 dist/
+src/generated/go-demo/
