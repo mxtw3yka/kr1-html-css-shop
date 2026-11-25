@@ -16,6 +16,8 @@
 .shop-page button, .shop-page input, .shop-page select, .shop-page textarea, .shop-card button { font: inherit; }
 .shop-page :focus-visible, .shop-card :focus-visible { outline: 3px solid #405258; outline-offset: 3px; }
 .shop-container { width: min(100% - 64px, 1280px); margin-inline: auto; }
+.shop-section--deep :focus-visible, .shop-home-hero :focus-visible, .shop-home-end :focus-visible, .shop-page-intro :focus-visible { outline-color: var(--brand-silver); }
+html[data-theme='light'] .shop-section--deep :focus-visible, html[data-theme='light'] .shop-home-hero :focus-visible, html[data-theme='light'] .shop-page-intro :focus-visible { outline-color: #405258; }
 .shop-section { padding: clamp(72px, 8vw, 112px) 0; }
 .shop-section--paper { background: var(--shop-paper); color: var(--shop-ink); }
 .shop-section--steel { background: var(--shop-steel); color: var(--shop-ink); }
@@ -84,6 +86,7 @@
 .shop-home-end__inner { display: grid; grid-template-columns: 1.15fr 1fr; align-items: end; gap: 70px; }
 .shop-home-end__inner > div:last-child { max-width: 450px; }
 .shop-home-end__inner > div:last-child p { margin: 0 0 26px; color: #b5c0c3; line-height: 1.8; }
+.shop-home-end .shop-kicker { color: var(--brand-silver); }
 
 .shop-product-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .shop-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--shop-line); border-radius: 3px; background: #fff; color: var(--shop-ink); }
@@ -137,11 +140,11 @@
 .shop-product-section .shop-crumbs a:hover { color: var(--shop-accent); }
 .shop-product-layout { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: clamp(34px,6vw,90px); align-items: start; }
 .shop-gallery__main { overflow: hidden; border-radius: 3px; background: #e4e9e8; }
-.shop-gallery__main img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.shop-gallery__main img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; }
 .shop-gallery__thumbs { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
-.shop-gallery__thumbs button { width: 102px; padding: 0; border: 2px solid transparent; background: #e4e9e8; cursor: pointer; }
+.shop-gallery__thumbs button { width: min(102px, calc((100% - 24px) / 3)); padding: 0; border: 2px solid transparent; background: #e4e9e8; cursor: pointer; }
 .shop-gallery__thumbs button:hover, .shop-gallery__thumbs button.is-active { border-color: var(--shop-accent); }
-.shop-gallery__thumbs img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.shop-gallery__thumbs img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; }
 .shop-product-copy { padding-top: 15px; }
 .shop-product-badge { display: inline-block; margin-bottom: 15px; padding: 6px 11px; border-radius: 2px; background: var(--shop-ink); color: white; font-size: 11px; font-weight: 800; }
 .shop-product-copy h1 { margin: 0 0 22px; font: 650 clamp(29px, 3.6vw, 54px)/1.25 var(--shop-display); letter-spacing: -.055em; overflow-wrap: anywhere; }
@@ -168,7 +171,7 @@
 .shop-table--tariffs { min-width: 650px; }
 .shop-conditions { margin: 0; padding: 0; list-style: none; border-top: 1px solid #536066; }
 .shop-conditions li { display: flex; gap: 26px; padding: 20px 0; border-bottom: 1px solid #536066; font-weight: 700; }
-.shop-conditions span { color: var(--brand-silver); font-size: 12px; }
+.shop-conditions span { color: var(--shop-accent); font-size: 12px; }
 .shop-faq { border-top: 1px solid #536066; }
 .shop-faq details { border-bottom: 1px solid #536066; }
 .shop-faq summary { position: relative; padding: 22px 35px 22px 0; font-weight: 800; cursor: pointer; }
@@ -185,7 +188,7 @@
 .shop-order-aside .shop-notice { padding-left: 15px; border-left: 2px solid var(--shop-accent); color: var(--shop-ink) !important; }
 .shop-order-form { padding: 34px; background: #fff; border: 1px solid var(--shop-line); border-top: 3px solid var(--shop-accent); border-radius: 3px; color: var(--shop-ink); }
 .shop-form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
-.shop-form-grid label { display: grid; align-content: start; gap: 8px; font-size: 12px; font-weight: 800; }
+.shop-form-grid label, .shop-form-grid .shop-form-field { display: grid; align-content: start; gap: 8px; font-size: 12px; font-weight: 800; }
 .shop-form-grid textarea { resize: vertical; }
 .shop-form-grid small { color: var(--shop-muted); font-size: 11px; font-weight: 500; }
 .shop-form-grid .shop-form-wide { grid-column: 1/-1; }

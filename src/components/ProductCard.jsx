@@ -5,7 +5,7 @@ export default function ProductCard({ product, favorite = false, onToggleFavorit
     <article className="shop-card">
       <div className="shop-card__media">
         <a href={`product.html?id=${encodeURIComponent(product.id)}`} aria-label={`Подробнее: ${product.name}`}>
-          <img src={product.image} alt={product.name} width="1000" height="750" loading="lazy" />
+          <img src={product.image} srcSet={`${product.imageSmall} 480w, ${product.image} 1000w`} sizes="(max-width: 540px) calc(100vw - 36px), (max-width: 760px) 45vw, (max-width: 1000px) 32vw, 400px" alt={product.name} width="1000" height="750" loading="lazy" />
         </a>
         {product.badge && <span className="shop-card__badge">{product.badge}</span>}
         {onToggleFavorite && (

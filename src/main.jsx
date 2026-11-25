@@ -9,6 +9,7 @@ import Contacts from './pages/Contacts.jsx';
 import Search from './pages/Search.jsx';
 import Cabinet from './pages/Cabinet.jsx';
 import { products } from './data/products.js';
+import './productExamples.js';
 import './styles/pages.css';
 import './styles/features.css';
 
