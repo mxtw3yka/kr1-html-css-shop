@@ -1,5 +1,11 @@
 const assets = import.meta.glob('./generated/go-demo/*', { eager: true, query: '?url', import: 'default' });
 
+function assertPrice(value) {
+  if (!Number.isSafeInteger(value) || value < 0) {
+    throw new TypeError('Price must be a non-negative integer number of rubles');
+  }
+}
+
 export function startGoDemo(sampleProduct) {
   let bridge;
   let resolveReady;
@@ -9,28 +15,8 @@ export function startGoDemo(sampleProduct) {
     rejectReady = reject;
   });
 
-  globalThis.goDemoReady = () => ready;
-  globalThis.goDemo = (product = sampleProduct) => {
-    if (!product || typeof product.name !== 'string' || !product.name.trim() ||
-        !Number.isSafeInteger(product.price) || product.price < 0 ||
-        (product.oldPrice != null && (!Number.isSafeInteger(product.oldPrice) || product.oldPrice < 0)) ||
-        typeof product.stock !== 'boolean') {
-      throw new TypeError('goDemo expects a product with a name, ruble prices, and boolean stock');
-    }
-    if (!bridge) throw new Error('Go/WASM is not ready; await goDemoReady()');
-
-    const results = {
-      price: bridge.formatPrice(product.price),
-      discount: bridge.calculateDiscount(product.price, product.oldPrice ?? 0),
-      status: bridge.getProductStatus(product.stock),
-      summary: bridge.createProductSummary(product.name, product.price, product.stock),
-    };
-    console.log('Go/WASM — цена:', results.price);
-    console.log('Go/WASM — скидка:', results.discount);
-    console.log('Go/WASM — статус:', results.status);
-    console.log('Go/WASM — описание:', results.summary);
-    return results;
-  };
+  globalThis.goDemoReady = ready;
+  globalThis.goDemo = undefined;
   globalThis.__gearGoReady = (api) => {
     if (!api || ['formatPrice', 'calculateDiscount', 'getProductStatus', 'createProductSummary']
       .some((method) => typeof api[method] !== 'function')) {
@@ -40,11 +26,52 @@ export function startGoDemo(sampleProduct) {
       return;
     }
     bridge = api;
+    globalThis.goDemo = {
+      formatPrice(price) {
+        assertPrice(price);
+        return api.formatPrice(price);
+      },
+      calculateDiscount(price, oldPrice) {
+        assertPrice(price);
+        assertPrice(oldPrice);
+        return api.calculateDiscount(price, oldPrice);
+      },
+      getProductStatus(isAvailable) {
+        if (typeof isAvailable !== 'boolean') throw new TypeError('Availability must be a boolean');
+        return api.getProductStatus(isAvailable);
+      },
+      createProductSummary(product) {
+        if (!product || typeof product.title !== 'string' || !product.title.trim()) {
+          throw new TypeError('Product title must be a non-empty string');
+        }
+        assertPrice(product.price);
+        if (typeof product.isAvailable !== 'boolean') throw new TypeError('Availability must be a boolean');
+        return api.createProductSummary(product.title, product.price, product.isAvailable);
+      },
+      run(product = sampleProduct) {
+        if (!product || typeof product.name !== 'string' || !product.name.trim()) {
+          throw new TypeError('goDemo.run expects a product with a name');
+        }
+        const results = {
+          price: this.formatPrice(product.price),
+          discount: this.calculateDiscount(product.price, product.oldPrice ?? 0),
+          status: this.getProductStatus(product.stock),
+          summary: this.createProductSummary({
+            title: product.name, price: product.price, isAvailable: product.stock,
+          }),
+        };
+        console.log('Go/WASM — цена:', results.price);
+        console.log('Go/WASM — скидка:', results.discount);
+        console.log('Go/WASM — статус:', results.status);
+        console.log('Go/WASM — описание:', results.summary);
+        return results;
+      },
+    };
     resolveReady(globalThis.goDemo);
   };
 
-  ready.then(() => {
-    try { globalThis.goDemo(sampleProduct); }
+  ready.then((demo) => {
+    try { demo.run(sampleProduct); }
     catch (error) { console.error('Go/WASM demo failed:', error); }
   }, () => {});
 
