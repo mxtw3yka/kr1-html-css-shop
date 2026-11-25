@@ -153,7 +153,7 @@ goDemo.createProductSummary({ title: 'Клавиатура', price: 3200, isAvai
 
 ## Ссылка на опубликованный проект
 
-GitHub Pages: https://mxtw3yka.github.io/kr1-html-css-shop/ (изменения в этой рабочей ветке ещё не опубликованы).
+GitHub Pages: https://mxtw3yka.github.io/kr1-html-css-shop/
 
 ## Изображения товаров
 
