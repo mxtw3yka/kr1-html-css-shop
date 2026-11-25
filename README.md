@@ -16,6 +16,7 @@ Gear — многостраничный каталог электроники и
 - `src/components/` — общая шапка, футер и карточки товаров;
 - `src/pages/` — компоненты страниц;
 - `src/data/products.js` — данные товаров и форматирование цен;
+- `backend/data/products.json` — копия 11 товаров для Go API; React пока использует `src/data/products.js`;
 - `src/productExamples.js` — вычисления и вывод примеров работы функций в консоль;
 - `src/styles/` — стили интерфейса;
 - `images/products/` — локальные фотографии, источники и лицензии в [`CREDITS.md`](images/products/CREDITS.md);
