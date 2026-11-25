@@ -3,11 +3,10 @@ import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
 import { OrderForm } from './Order';
 
-const featured = products.filter((product) => product.featured);
-
 export default function Home({ favorites = [], onToggleFavorite }) {
   const dialogRef = useRef(null);
   const [selected, setSelected] = useState(null);
+  const featured = products.filter((product) => product.featured);
 
   function openPreview(product) {
     setSelected(product);

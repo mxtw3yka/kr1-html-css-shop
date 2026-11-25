@@ -2,11 +2,11 @@ import { useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
 
-const categories = [...new Set(products.map((product) => product.category))];
 const initialFilters = { category: '', badge: '', min: '', max: '', stock: '', sort: 'popular' };
 
 export default function Catalog({ favorites = [], onToggleFavorite }) {
   const [filters, setFilters] = useState(initialFilters);
+  const categories = [...new Set(products.map((product) => product.category))];
   const change = (key) => (event) => setFilters((current) => ({ ...current, [key]: event.target.value }));
   const visible = products.filter((product) => (
     (!filters.category || product.category === filters.category) &&
